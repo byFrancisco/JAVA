@@ -1,0 +1,49 @@
+//Sirve para hacer una interfaz que tenga para hacer comentarios
+package example;
+import javax.swing.*;
+import java.awt.event.*;
+
+public class Descripcion extends JFrame implements ActionListener {
+	
+	private JTextField textfield1;
+	private JScrollPane scrollpane1;
+	private JTextArea textarea1;
+	private JButton button1;
+	
+	String texto = "";
+	
+	public Descripcion() {
+		setLayout(null);
+		textfield1 = new JTextField();
+		textfield1.setBounds(10,10,200,30);
+		add(textfield1);
+		
+		
+		button1= new JButton("Agregar");
+		button1.setBounds(250,10,100,30);
+		add(button1);
+		button1.addActionListener(this);
+		
+		textarea1 = new JTextArea();
+		scrollpane1 = new JScrollPane(textarea1);
+		scrollpane1.setBounds(10,50,400,300);
+		add(scrollpane1);
+	}
+	public void actionPerformed(ActionEvent e) {
+		if(e.getSource()== button1) {
+			texto += textfield1.getText() + "\n" ;//getText es para recuperar lo que este en textfield1
+			textarea1.setText(texto);//coloca el texto con set
+			textfield1.setText("");
+		}
+	}
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Descripcion descripcion1 = new Descripcion();
+		descripcion1.setBounds(0,0,540,400);
+		descripcion1.setVisible(true);
+		descripcion1.setResizable(true);
+		descripcion1.setLocationRelativeTo(null);
+	}
+
+}
